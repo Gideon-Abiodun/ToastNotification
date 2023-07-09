@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: linear-gradient(-136deg, #ffffff, #ffffff);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.buttons {
+    margin: 50px;
+    position: absolute;
+    bottom: 0;
+}
+
+.buttons button {
+    /* display: block; */
+    background: linear-gradient(-136deg, #5895ff, #0f3880);
+    color: #fff;
+    border: 0;
+    outline: 0;
+    width: 120px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+    transition: .3s ease;
+    border-radius: 5px;
+}
+
+.buttons button:hover{
+    opacity: .9;
+}
+
+#toastBox {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.toast {
+    width: 300px;
+    height: 70px;
+    background: #fff;
+    font-weight: 500;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+    transform: translateX(100%);
+    animation: box-container .5s linear forwards;
+}
+
+/* Animation 01 */
+
+@keyframes box-container {
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.toast i {
+    margin: 0 20px;
+    font-size: 35px;
+    color: green;
+}
+
+.toast.error i {
+    color: red;
+}
+
+.toast.invalid i {
+    color: orange;
+}
+
+.toast::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: green;
+    animation: line 5s linear forwards;
+}
+
+/* Animation 02 */
+@keyframes line {
+    80%{
+        width: 0;
+    }
+}
+
+.toast.error::after{
+    background: red;
+}
+
+.toast.invalid::after{
+    background: orange;
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px) {
+
+    .buttons {
+        position: absolute;
+        bottom: 300px;
+    }
+    #toastBox {
+        top: 20px;
+        right: 0;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .buttons {
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
+        position: absolute;
+        bottom: 0;
+    }
+
+    .buttons button{
+        margin-bottom: 1.5rem;
+    }
+
+    #toastBox {
+        top: 20px;
+        right: 0;
+    }
+
+    .toast{
+        width: 300px;
+        height: 60px;
+    }
+}
